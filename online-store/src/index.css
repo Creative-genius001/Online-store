@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, sans-serif;
+}
+
+.card{
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+  width: 220px;
+  height: 300px;
+  
+  border-radius: 15px;
+}
+.btn-shadow{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.product-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 50px;
+  
+}
+.product-image{
+  height: 80%;
+  background-color: #d3d2d2;
+  object-fit: contain;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+.pro-card{
+  border-radius: 15px;
+}
+
+.btn-qty{
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+}
+.input-qty{
+  width: 40px;  
+  height: 25px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+.cart-detail{
+  width: 68%;
+  display: flex;
+  flex-direction: column;
+}
+.cart-top{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cart-bottom{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-qty span{
+ 
+  cursor: pointer;
+}
+.minus{
+  border: 1px solid gray;
+   padding: 6px 12px;
+  color: #f02d34;
+  font-size: 9px;
+}
+.num{
+  
+   padding: 4px 12px;
+   font-size: 12px;
+   font-weight: 500;
+  
+}
+.plus{
+  border: 1px solid gray;
+  color: rgb(49, 168, 49);
+   padding: 6px 12px;
+   font-size: 9px;
+
+}
+.cart-qty{
+  display: flex;
+  align-items: center;
+  justify-items: flex-start;
+}
+.cart-img{
+  width: 30%;
+  height: 80px;
+  margin-right: 2%;
+  border-radius: 10px;
+}
+.banner{
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 400px;
+  background-color: grey;
+  border: 0;
+  border-radius: 15px;
+}
+.banner-img{
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+   border-radius: 15px;
+  overflow:hidden;
+}
+
+.addTocartBtn{
+  display: block;
+  width: 100%;
+}
+.category-div{
+  background-color: #f02d34;
+  
+}
