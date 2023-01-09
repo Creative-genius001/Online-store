@@ -3,24 +3,31 @@ import Navbar from "../components/Navbar";
 import { BsSortDown } from "react-icons/bs";
 import ProductCard from "../components/ProductCard";
 import { AppContext } from "../contextApi/context";
+import { CommmerceContext } from "../contextApi/commerceAPI";
 import { PRODUCTS } from "../products";
 import banner1 from "../assets/banners/banner1.jpg";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
+import Loader from "../components/Loader";
 
 export const Homepage = () => {
 	const [toggle, setToggle] = useState(false);
-	const { getAllProducts, products } =
-		useContext(AppContext);
+	const {
+		getAllProducts,
+		// products,
+		getClothes,
+		getShoes,
+		getWatches,
+		getGadgets,
+		cartItems,
+	} = useContext(AppContext);
+	const { getProducts, products } = useContext(
+		CommmerceContext,
+	);
 	useEffect(() => {
-		getAllProducts();
+		getProducts();
 		console.log(products);
 	}, []);
-
-	const toggleFilter = () => {
-		setToggle(!toggle);
-		console.log(toggle);
-	};
 
 	return (
 		<div>
@@ -36,40 +43,66 @@ export const Homepage = () => {
 					className="banner-img"
 				/>
 			</div>
-			<div classname="category-div">
+			<section classname="category-div">
 				<h3 className="ml-8 font-bold my-4 text-[1.7rem]">
 					Top Products
 				</h3>
-				{/* <div>
-					<span>Sort</span>
+				<div className="sort flex items-center mr-4">
+					<span className="mr-2 font-medium">
+						Filter
+					</span>
 					<BsSortDown
 						className="cursor-pointer "
-						onClick={() => toggleFilter()}
+						onMouseOver={() => setToggle(!toggle)}
 					/>
 					{toggle ? (
-						<ul className="">
-							<li>All Items</li>
-							<li>Clothes</li>
-							<li>Gadgets</li>
-							<li>Watches</li>
-							<li>Shoes</li>
+						<ul className="sort-ul">
+							<li
+								onClick={getAllProducts}
+								className="sort-li">
+								All Items
+							</li>
+							<li
+								onClick={getClothes}
+								className="sort-li">
+								Clothes
+							</li>
+							<li
+								onClick={getGadgets}
+								className="sort-li">
+								Gadgets
+							</li>
+							<li
+								onClick={getWatches}
+								className="sort-li">
+								Watches
+							</li>
+							<li
+								onClick={getShoes}
+								className="sort-li">
+								Shoes
+							</li>
 						</ul>
 					) : (
 						<></>
 					)}
-				</div> */}
-			</div>
+				</div>
+			</section>
 
 			<div className="mx-auto w-[95%]">
 				<div className="product-card ">
-					{products.map((product) => {
-						return (
-							<ProductCard
-								product={product}
-								key={product.id}
-							/>
-						);
-					})}
+					{products.length > 0 ? (
+						products.map((product) => {
+							return (
+								<ProductCard
+									product={product}
+									key={product.id}
+								/>
+							);
+						})
+					) : (
+						<Loader />
+					)}
 				</div>
 			</div>
 			<Footer />

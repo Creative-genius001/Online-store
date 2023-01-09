@@ -22,6 +22,8 @@ export const PRODUCTS = [
 		name: "iPhone 11 Pro",
 		price: 1246.23,
 		image: product1,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "gadgets",
 		description:
 			"Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
@@ -31,6 +33,8 @@ export const PRODUCTS = [
 		name: "Mac Book",
 		price: 1790.32,
 		image: product2,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "gadgets",
 		description:
 			"49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
@@ -40,6 +44,8 @@ export const PRODUCTS = [
 		name: "Sony Camera",
 		price: 300.43,
 		image: product3,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "gadgets",
 		description:
 			"Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
@@ -49,6 +55,8 @@ export const PRODUCTS = [
 		name: "Grey Jean Jacket",
 		price: 50.23,
 		image: product4,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "clothes",
 		description:
 			"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
@@ -58,6 +66,8 @@ export const PRODUCTS = [
 		name: "GPU",
 		price: 427.88,
 		image: product5,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "gadgets",
 		description:
 			"3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
@@ -67,6 +77,8 @@ export const PRODUCTS = [
 		name: "Sweatshirt- White",
 		price: 25.66,
 		image: product6,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "clothes",
 		description:
 			"Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
@@ -76,6 +88,8 @@ export const PRODUCTS = [
 		name: "Plain Sleeves",
 		price: 20.44,
 		image: product7,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "clothes",
 		description:
 			"The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
@@ -85,6 +99,8 @@ export const PRODUCTS = [
 		name: "Gucci Cap",
 		price: 830.99,
 		image: product8,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "clothes",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -94,6 +110,8 @@ export const PRODUCTS = [
 		name: "Silver Rolex",
 		price: 230.99,
 		image: rolex1,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "watches",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -103,6 +121,8 @@ export const PRODUCTS = [
 		name: "Gold Stripped Rolex",
 		price: 520.99,
 		image: rolex2,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "watches",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -112,6 +132,8 @@ export const PRODUCTS = [
 		name: "Crystal Plated Rolex ",
 		price: 190.99,
 		image: rolex3,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "watches",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -121,6 +143,8 @@ export const PRODUCTS = [
 		name: "Aluminium Plated Rolex",
 		price: 410.49,
 		image: rolex5,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "watches",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -130,6 +154,8 @@ export const PRODUCTS = [
 		name: "Silver Egraved Rolex",
 		price: 230.99,
 		image: rolex4,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "watches",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -139,6 +165,8 @@ export const PRODUCTS = [
 		name: "Jordan Sneakers- Red",
 		price: 59.99,
 		image: shoe2,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "shoes",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -148,6 +176,8 @@ export const PRODUCTS = [
 		name: "AirMax Sneakers",
 		price: 159.99,
 		image: shoe1,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "shoes",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -157,6 +187,8 @@ export const PRODUCTS = [
 		name: "Yellow Nikes",
 		price: 229.99,
 		image: shoe4,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "shoes",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
@@ -166,6 +198,8 @@ export const PRODUCTS = [
 		name: "Jordan Sneakers Trainers-Red",
 		price: 60.99,
 		image: shoe3,
+		quantity: 1,
+		isAddedToCart: false,
 		category: "shoes",
 		description:
 			"95%Cotton,5%Spandex. The fabric is soft and has some stretch. Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",

@@ -3,6 +3,7 @@ import { Homepage } from "./pages/Homepage";
 import { useEffect, useState } from "react";
 import ProductPage from "./pages/ProductPage";
 import { AppContextProvider } from "./contextApi/context";
+import { CommerceContextProvider } from "./contextApi/commerceAPI";
 import {
 	Routes,
 	Route,
@@ -12,25 +13,27 @@ import Cart from "./pages/Cart";
 
 function App() {
 	return (
-		<AppContextProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route
-						path="/"
-						element={<Homepage />}
-					/>
+		<CommerceContextProvider>
+			<AppContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route
+							path="/"
+							element={<Homepage />}
+						/>
 
-					<Route
-						path="/product/:category/:id"
-						element={<ProductPage />}
-					/>
-					<Route
-						path="/cart/"
-						element={<Cart />}
-					/>
-				</Routes>
-			</BrowserRouter>
-		</AppContextProvider>
+						<Route
+							path="/product/:category/:id"
+							element={<ProductPage />}
+						/>
+						<Route
+							path="/cart/"
+							element={<Cart />}
+						/>
+					</Routes>
+				</BrowserRouter>
+			</AppContextProvider>
+		</CommerceContextProvider>
 	);
 }
 

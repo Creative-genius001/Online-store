@@ -11,18 +11,17 @@ import { PRODUCTS } from "../products";
 export const AppContext = createContext();
 
 export function AppContextProvider({ children }) {
-	const [products, setProducts] = useState([]);
+	const [products, setProducts] =
+		useState(PRODUCTS);
 	const [clone, setClone] = useState([]);
-	const [quantity, setquantity] = useState(1);
+	const [quantity, setquantity] = useState("1");
 	const [product, setproduct] = useState([]);
 	const [productInCart, setProductInCart] =
 		useState(Boolean);
 
-	const [cartItems] = useState(
-		localStorage.getItem("Cart")
-			? JSON.parse(localStorage.getItem("Cart"))
-			: [],
-	);
+	let cartItems = localStorage.getItem("Cart")
+		? JSON.parse(localStorage.getItem("Cart"))
+		: [];
 
 	// setcartItems
 
@@ -36,10 +35,19 @@ export function AppContextProvider({ children }) {
 	};
 
 	const getSingleProduct = async (id) => {
-		const data = PRODUCTS.filter((product) => {
+		let data = cartItems.filter((product) => {
 			return product.id == id;
 		});
-		await setproduct(data);
+
+		console.log(data[0]);
+		if (data.length != 0) {
+			setproduct(data);
+		} else {
+			data = products.filter((product) => {
+				return product.id == id;
+			});
+			setproduct(data);
+		}
 	};
 
 	const getClothes = async () => {
@@ -74,17 +82,53 @@ export function AppContextProvider({ children }) {
 		await setProducts(data);
 	};
 
-	const inc = () => {
-		updateCart();
+	const inc = (index, quantity) => {
+		updateCart(index, quantity);
 		setquantity(quantity + 1);
 	};
 
 	const dec = () => {
-		updateCart();
+		updateCartDec();
 		setquantity(quantity - 1);
 	};
+	function updateCartDec(index, quantity) {}
 
-	function updateCart() {}
+	function updateCart(index, quantity) {
+		// console.log(data[num]);
+
+		// let cart = [...cartItems];
+		// let num2 = cart.findIndex(
+		// 	(arg) => arg.id == index,
+		// );
+
+		// if (num2) {
+		// 	cart[num2].quantity++;
+		// 	cartItems = [];
+		// 	cartItems.push(cart);
+		// 	localStorage.setItem(
+		// 		"Cart",
+		// 		JSON.stringify(cartItems),
+		// 	);
+		// } else {
+		let data = [...products];
+		let num = data.findIndex(
+			(arg) => arg.id == index,
+		);
+		data[num].quantity++;
+
+		// data = data.filter((d) => d.id === index);
+		// data = data.map((d) => {
+		// 	d.quantity++;
+		// 	console.log(d);
+		// });
+		//data[num].value++;
+
+		// cartItems.push(productExist);
+		// localStorage.setItem(
+		// 	"Cart",
+		// 	JSON.stringify(cartItems),
+		// );
+	}
 
 	const addToCart = (index, quantity) => {
 		const productExist = cartItems.find(
@@ -98,7 +142,6 @@ export function AppContextProvider({ children }) {
 			});
 
 			data = data.map((d) => {
-				d.quantity = quantity;
 				d.isAddedToCart = true;
 				cartItems.push(d);
 				localStorage.setItem(
@@ -108,33 +151,29 @@ export function AppContextProvider({ children }) {
 				return null;
 			});
 
-			console.log(cartItems);
+			setProductInCart(true);
 
 			setCart(cartItems.length);
 		}
 	};
 
-	const removeFromCart = (index, quantity) => {
+	const removeFromCart = (index) => {
 		let data = cartItems.filter((p) => {
-			return p.id === index;
+			return p.id !== index;
 		});
 
-		console.log(data);
-
-		// 	data = data.map((d) => {
-		// 		d.quantity = quantity;
-		// 		cartItems.push(d);
-		// 		localStorage.setItem(
-		// 			"Cart",
-		// 			JSON.stringify(cartItems),
-		// 		);
-		// 		return null;
-		// 	});
-
-		// 	console.log(cartItems);
-
-		// 	setCart(cartItems.length);
-		// }
+		if (data.length <= 0) {
+			cartItems = [];
+			localStorage.removeItem("Cart");
+		} else {
+			cartItems = [];
+			cartItems.push(data);
+			localStorage.setItem(
+				"Cart",
+				JSON.stringify(data),
+			);
+		}
+		console.log(cartItems);
 	};
 
 	const checkProductInCart = (index) => {
