@@ -1,19 +1,30 @@
 import { useState, useContext } from "react";
 import {
-	useParams,
 	useNavigate,
 	Link,
 } from "react-router-dom";
-import { AiOutlineCheck } from "react-icons/ai";
-import { AppContext } from "../contextApi/context";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 const ProductCard = ({ product }) => {
+	const [isClicked, setIsClicked] =
+		useState(false);
 	const { addToCart } = useContext(
 		CommmerceContext,
 	);
 	const navigate = useNavigate();
+	function clickFunc() {
+		setIsClicked(true);
+		const myTimeout = setTimeout(
+			showLoader,
+			5000,
+		);
+	}
+
+	function showLoader() {
+		setIsClicked(false);
+	}
+
 	return (
 		<div className="card ">
 			<div
@@ -38,10 +49,22 @@ const ProductCard = ({ product }) => {
 						${product.price.raw}
 					</p>
 
-					<MdOutlineAddShoppingCart
-						onClick={() => addToCart(product.id)}
-						className="text-[1.2rem] text-[#FE6263] cursor-pointer "
-					/>
+					{isClicked ? (
+						<div class="lds-ring">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					) : (
+						<MdOutlineAddShoppingCart
+							onClick={() => {
+								clickFunc();
+								addToCart(product.id);
+							}}
+							className="text-[1.2rem] text-[#FE6263] cursor-pointer "
+						/>
+					)}
 				</div>
 			</div>
 		</div>

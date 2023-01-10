@@ -1,32 +1,23 @@
 import { useContext, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { BsSortDown } from "react-icons/bs";
 import ProductCard from "../components/ProductCard";
-import { AppContext } from "../contextApi/context";
 import { CommmerceContext } from "../contextApi/commerceAPI";
-import { PRODUCTS } from "../products";
 import banner1 from "../assets/banners/banner1.jpg";
 import { Footer } from "../components/Footer";
-import { useState } from "react";
 import Loader from "../components/Loader";
+import Categories from "../components/Categories";
 
 export const Homepage = () => {
-	const [toggle, setToggle] = useState(false);
 	const {
-		getAllProducts,
-		// products,
-		getClothes,
-		getShoes,
-		getWatches,
-		getGadgets,
-		cartItems,
-	} = useContext(AppContext);
-	const { getProducts, products } = useContext(
-		CommmerceContext,
-	);
+		getProducts,
+		products,
+		allCategories,
+		getAllCategories,
+		getSingleCat,
+	} = useContext(CommmerceContext);
 	useEffect(() => {
 		getProducts();
-		console.log(products);
+		getAllCategories();
 	}, []);
 
 	return (
@@ -43,49 +34,16 @@ export const Homepage = () => {
 					className="banner-img"
 				/>
 			</div>
-			<section classname="category-div">
+			<section className="category-div">
 				<h3 className="ml-8 font-bold my-4 text-[1.7rem]">
 					Top Products
 				</h3>
 				<div className="sort flex items-center mr-4">
-					<span className="mr-2 font-medium">
-						Filter
-					</span>
-					<BsSortDown
-						className="cursor-pointer "
-						onMouseOver={() => setToggle(!toggle)}
+					<Categories
+						getProducts={getProducts}
+						allCategories={allCategories}
+						getSingleCat={getSingleCat}
 					/>
-					{toggle ? (
-						<ul className="sort-ul">
-							<li
-								onClick={getAllProducts}
-								className="sort-li">
-								All Items
-							</li>
-							<li
-								onClick={getClothes}
-								className="sort-li">
-								Clothes
-							</li>
-							<li
-								onClick={getGadgets}
-								className="sort-li">
-								Gadgets
-							</li>
-							<li
-								onClick={getWatches}
-								className="sort-li">
-								Watches
-							</li>
-							<li
-								onClick={getShoes}
-								className="sort-li">
-								Shoes
-							</li>
-						</ul>
-					) : (
-						<></>
-					)}
 				</div>
 			</section>
 

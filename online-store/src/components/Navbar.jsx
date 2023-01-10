@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-	const { numberInCart } = useContext(
-		CommmerceContext,
-	);
+	const { numberInCart, getCartNumber } =
+		useContext(CommmerceContext);
+
+	useEffect(() => {
+		getCartNumber();
+	}, [numberInCart]);
+
 	return (
 		<div className="w-[100%] sticky top-0 bg-white z-50 ">
 			<div className="w-[95%] mx-auto py-4 flex flex-row items-center justify-between h-14 ">

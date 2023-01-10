@@ -1,35 +1,13 @@
-import {
-	useContext,
-	useEffect,
-	useState,
-} from "react";
+import { useContext, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import { AppContext } from "../contextApi/context";
 import { Footer } from "../components/Footer";
-import product1 from "../assets/products/1.png";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import Loader from "../components/Loader";
-import Commerce from "@chec/commerce.js";
 
 const ProductPage = () => {
-	const {
-		// product,
-		getSingleProduct,
-		inc,
-		dec,
-		quantity,
-		setquantity,
-		addToCart,
-		removeFromCart,
-		checkProductInCart,
-		productInCart,
-		updateCart,
-	} = useContext(AppContext);
-
-	const { product, getProduct } = useContext(
-		CommmerceContext,
-	);
+	const { product, getProduct, addToCart } =
+		useContext(CommmerceContext);
 
 	const params = useParams();
 
@@ -64,10 +42,11 @@ const ProductPage = () => {
 												</h2>
 												<h5 className="uppercase text-[#FE6263] text-[.9rem] font-medium">
 													<span className="">
-														Category:
+														Category:{" "}
+														{p.categories[0].name}
 													</span>
-													shoe
 												</h5>
+
 												<h5 className="text-black font-semibold text-[1.8rem] mt-2 ">
 													${p.price.raw}
 												</h5>
@@ -76,11 +55,14 @@ const ProductPage = () => {
 												<h5 className="font-bold text-[1.2rem]">
 													Product Info
 												</h5>
-												<p className="text-[1rem]">
+												<span className="text-[1rem]">
 													{p.description}
-												</p>
+												</span>
 											</div>
-											<div className=" mt-4 mx-auto flex flex-row items-center">
+
+											{/* quantity section */}
+
+											{/* <div className=" mt-4 mx-auto flex flex-row items-center">
 												<h5 className="font-semibold text-[1rem] mr-1">
 													Quantity:
 												</h5>
@@ -109,7 +91,7 @@ const ProductPage = () => {
 													className="btn-qty">
 													+
 												</button>
-											</div>
+											</div> */}
 											{
 												// <button
 												// 	disabled
@@ -125,10 +107,7 @@ const ProductPage = () => {
 
 												<button
 													onClick={() =>
-														addToCart(
-															p.id,
-															quantity,
-														)
+														addToCart(p.id)
 													}
 													className="addTocartBtn mt-4 bg-black  h-[50px] cursor-pointer text-white font-medium text-[0.8rem] hover:bg-neutral-900  ">
 													Add To cart
