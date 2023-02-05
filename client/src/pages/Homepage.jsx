@@ -4,8 +4,8 @@ import ProductCard from "../components/ProductCard";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import banner1 from "../assets/banners/banner1.jpg";
 import { Footer } from "../components/Footer";
-import Loader from "../components/Loader";
 import Categories from "../components/Categories";
+import "../styles/homepage.css";
 
 export const Homepage = () => {
 	const {
@@ -35,9 +35,7 @@ export const Homepage = () => {
 				/>
 			</div>
 			<section className="category-div">
-				<h3 className="ml-8 font-bold my-4 text-[1.7rem]">
-					Top Products
-				</h3>
+				<h3 className="h3">Top Products</h3>
 				<div className="sort flex items-center mr-4">
 					<Categories
 						getProducts={getProducts}
@@ -49,18 +47,16 @@ export const Homepage = () => {
 
 			<div className="mx-auto w-[95%]">
 				<div className="product-card ">
-					{products.length > 0 ? (
-						products.map((product) => {
-							return (
-								<ProductCard
-									product={product}
-									key={product.id}
-								/>
-							);
-						})
-					) : (
-						<Loader />
-					)}
+					{products.length > 0
+						? products.map((product) => {
+								return (
+									<ProductCard
+										product={product}
+										key={product.id}
+									/>
+								);
+						  })
+						: ""}
 				</div>
 			</div>
 			<Footer />

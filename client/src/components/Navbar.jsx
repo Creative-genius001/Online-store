@@ -1,4 +1,8 @@
-import { useContext, useEffect } from "react";
+import {
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import { Link } from "react-router-dom";
@@ -7,9 +11,17 @@ const Navbar = () => {
 	const { numberInCart, getCartNumber } =
 		useContext(CommmerceContext);
 
+	const [temp, setTemp] = useState(0);
+
+	useEffect(() => {
+		setInterval(() => {
+			setTemp((prevTemp) => prevTemp + 1);
+		}, 5000);
+	}, []);
+
 	useEffect(() => {
 		getCartNumber();
-	}, [numberInCart]);
+	}, [temp]);
 
 	return (
 		<div className="w-[100%] sticky top-0 bg-white z-50 ">

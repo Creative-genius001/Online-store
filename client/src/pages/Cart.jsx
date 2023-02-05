@@ -5,6 +5,7 @@ import { CommmerceContext } from "../contextApi/commerceAPI";
 import {
 	BsArrowLeftShort,
 	BsArrowRightShort,
+	BsWindowSidebar,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -12,42 +13,42 @@ import { useState } from "react";
 import axios from "axios";
 
 const Cart = () => {
-	const [isLoaded, setIsLoaded] = useState(true);
+	// const [isLoaded, setIsLoaded] = useState(true);
 	const {
 		getCartContents,
+		isLoading,
 		cartList,
 		subTotal,
 		cartLength,
 	} = useContext(CommmerceContext);
 	useEffect(() => {
-		timeoutFunc();
+		// timeoutFunc();
 		getCartContents();
 	}, [subTotal]);
 
-	function timeoutFunc() {
-		const myTimeout = setTimeout(
-			showLoader,
-			5000,
-		);
-	}
+	// function timeoutFunc() {
+	// 	const myTimeout = setTimeout(
+	// 		showLoader,
+	// 		5000,
+	// 	);
+	// }
 
-	function showLoader() {
-		setIsLoaded(false);
-	}
+	// function showLoader() {
+	// 	setIsLoaded(false);
+	// }
 
 	async function checkoutFunction() {
 		try {
-			await axios
-				.post(
-					"http://localhost:5500/create-checkout-session",
-					{
-						cartList,
-					},
-				)
-				.then((res) => {
-					console.log(res.data.url);
-					console.log(cartList);
-				});
+			await axios({
+				method: "post",
+				url: "http://localhost:5500/create-checkout-session",
+				data: cartList.map((list) => {
+					return list;
+				}),
+				withCredentials: false,
+			}).then((res) => {
+				window.location = res.data.url;
+			});
 		} catch (e) {
 			console.log({ error: e.message });
 		}
@@ -57,7 +58,6 @@ const Cart = () => {
 		<>
 			<Navbar />
 			<div className="w-full h-[100vh] bg-white ">
-				{isLoaded ? <Loader /> : ""}
 				{cartLength !== 0 ? (
 					<div className="cart-container  ">
 						<div className="cart-cards">
@@ -132,4 +132,9 @@ const Cart = () => {
 						</div>
 					</div>
 				)}
-			</d
+			</div>
+		</>
+	);
+};
+
+export default Cart;

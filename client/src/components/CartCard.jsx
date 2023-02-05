@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { IoMdTrash } from "react-icons/io";
+import { useState } from "react";
+import Loader from "./Loader";
 import {
 	AiOutlineMinus,
 	AiOutlinePlus,
@@ -12,6 +14,17 @@ const CartCard = ({ item }) => {
 		updateCartInc,
 		updateCartDec,
 	} = useContext(CommmerceContext);
+
+	const [isLoading, setIsLoading] =
+		useState(false);
+
+	const onLoading = () => {
+		setIsLoading(true);
+		console.log(isLoading);
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 5200);
+	};
 
 	return (
 		<>
@@ -36,28 +49,42 @@ const CartCard = ({ item }) => {
 						<div className="cart-qty">
 							<button
 								className="btn-qty"
-								onClick={() =>
+								onClick={() => {
+									onLoading();
 									updateCartDec(
 										item.id,
 										item.quantity,
-									)
-								}>
+									);
+								}}>
 								-
 							</button>
-							<input
-								type="text"
-								value={item.quantity}
-								name="qty"
-								className="input-qty"
-							/>
+							{isLoading ? (
+								<div className="px-3">
+									<div class="lds-ring two">
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+									</div>
+								</div>
+							) : (
+								<input
+									type="text"
+									value={item.quantity}
+									name="qty"
+									className="input-qty"
+								/>
+							)}
+
 							<button
 								className="btn-qty"
-								onClick={() =>
+								onClick={() => {
+									onLoading();
 									updateCartInc(
 										item.id,
 										item.quantity,
-									)
-								}>
+									);
+								}}>
 								+
 							</button>
 						</div>

@@ -53,9 +53,6 @@ export function CommerceContextProvider({
 	};
 
 	const getCartContents = async () => {
-		// await commerce.cart
-		// 	.contents()
-		// 	.then((items) => setCartList(items));
 		await commerce.cart
 			.retrieve()
 			.then((cart) => {

@@ -14,14 +14,15 @@ app.use(
 
 const YOUR_DOMAIN = "http://localhost:3000";
 
-const products = [
-	{ name: "shoe", quantity: 1, price: 20 },
-	{ name: "clothes", quantity: 5, price: 25 },
-];
+// const products = [
+// 	{ name: "shoe", quantity: 1, price: 20 },
+// 	{ name: "clothes", quantity: 5, price: 25 },
+// ];
 
 app.post(
 	"/create-checkout-session",
 	async (req, res) => {
+		products = req.body;
 		try {
 			const session =
 				await stripe.checkout.sessions.create({
@@ -33,7 +34,8 @@ app.post(
 								product_data: {
 									name: product.name,
 								},
-								unit_amount: product.price * 100,
+								unit_amount:
+									product.line_total.raw * 100,
 							},
 							quantity: product.quantity,
 						};
@@ -46,6 +48,7 @@ app.post(
 			res.json({ url: session.url });
 		} catch (e) {
 			res.status(500).json({ error: e.message });
+			console.log(e.message);
 		}
 	},
 );

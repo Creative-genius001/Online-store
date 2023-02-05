@@ -111,6 +111,11 @@
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #f02d34 transparent transparent transparent;
 }
+
+.lds-ring.two div{
+  margin-left: -5px !important;
+  
+}
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
@@ -267,49 +272,9 @@ hr{
   border: 1px solid rgba(0, 0, 0, 0.452);
   margin-top: 8px;
 }
-.banner{
-  width: 95%;
-  margin: 0 auto;
-  margin-top: 10px;
-  height: 400px;
-  background-color: grey;
-  border: 0;
-  border-radius: 15px;
-}
-.banner-img{
-  width: auto;
-  height: 100%;
-  object-fit: cover;
-   border-radius: 15px;
-  overflow:hidden;
-}
+
 
 .addTocartBtn{
   display: block;
   width: 100%;
-}
-section{
-  width: 95%;
-  height: auto;
-  /* background-color: #f02d34; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.sort-ul{
-  position: absolute;
-  top: 55%;
-  box-shadow: 0px 15px 21px -7px rgba(0,0,0,0.22);
--webkit-box-shadow: 0px 15px 21px -7px rgba(0,0,0,0.22);
--moz-box-shadow: 0px 15px 21px -7px rgba(0,0,0,0.22);
-background-color: white;
-}
-.sort-li{
-    cursor: pointer;
-    padding: 5px 14px;
-}
-.sort-li:hover {
-  
-  background-color: black;
-  color: white;
 }
