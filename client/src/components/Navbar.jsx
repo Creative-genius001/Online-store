@@ -25,7 +25,7 @@ const Navbar = () => {
 
 	return (
 		<div className="w-[100%] sticky top-0 bg-white z-50 ">
-			<div className="w-[95%] mx-auto py-4 flex flex-row items-center justify-between h-14 ">
+			<div className="navbar w-[95%] mx-auto py-4 flex flex-row items-center justify-between h-14 ">
 				<Link to="/">
 					<h1 className="text-left text-[1.5rem] font-extrabold text-black ">
 						Online Store.

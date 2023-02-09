@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import "../styles/productcard.css";
 
 const ProductCard = ({ product }) => {
 	const [isClicked, setIsClicked] =
@@ -17,7 +18,7 @@ const ProductCard = ({ product }) => {
 		setIsClicked(true);
 		const myTimeout = setTimeout(
 			showLoader,
-			5000,
+			3000,
 		);
 	}
 

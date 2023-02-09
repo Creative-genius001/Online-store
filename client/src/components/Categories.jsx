@@ -15,7 +15,7 @@ const Categories = ({
 			</span>
 			<BsSortDown
 				className="cursor-pointer "
-				onMouseOver={() => setToggle(!toggle)}
+				onClick={() => setToggle(!toggle)}
 			/>
 			{toggle ? (
 				<ul className="sort-ul">

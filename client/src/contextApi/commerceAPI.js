@@ -22,6 +22,8 @@ export function CommerceContextProvider({
 	const [subTotal, setSubTotal] = useState();
 	const [numberInCart, setNumberInCart] =
 		useState(0);
+	const [isLoading, setIsLoading] =
+		useState(false);
 
 	const getCartNumber = async () => {
 		await commerce.cart
@@ -47,18 +49,22 @@ export function CommerceContextProvider({
 	};
 
 	const addToCart = async (id) => {
-		commerce.cart.add(id, 1).then((response) => {
-			setNumberInCart(response.total_items);
-		});
+		await commerce.cart
+			.add(id, 1)
+			.then((response) => {
+				setNumberInCart(response.total_items);
+			});
 	};
 
 	const getCartContents = async () => {
+		setIsLoading(true);
 		await commerce.cart
 			.retrieve()
 			.then((cart) => {
 				setCartList(cart.line_items);
 				setSubTotal(cart.subtotal.raw);
 				setCartLength(cart.total_items);
+				setIsLoading(false);
 			});
 	};
 
@@ -139,6 +145,7 @@ export function CommerceContextProvider({
 				getProduct,
 				products,
 				product,
+				isLoading,
 				numberInCart,
 			}}>
 			{children}

@@ -1,9 +1,13 @@
-import { useContext, useEffect } from "react";
+import {
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import { Footer } from "../components/Footer";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 import Loader from "../components/Loader";
+import "../styles/productcard.css";
 
 const ProductPage = () => {
 	const { product, getProduct, addToCart } =
@@ -16,6 +20,17 @@ const ProductPage = () => {
 		// checkProductInCart(params.id);
 	}, []);
 
+	const [isLoading, setIsLoading] =
+		useState(false);
+
+	const onLoading = () => {
+		setIsLoading(true);
+		console.log(isLoading);
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 5200);
+	};
+
 	return (
 		<div className="">
 			<Navbar />
@@ -26,7 +41,7 @@ const ProductPage = () => {
 							<>
 								<div
 									key={p.id}
-									className="flex flex-row justify-evenly ">
+									className="container flex flex-row justify-evenly ">
 									<div className="pro-card w-[500px] h-[500px] bg-[#d3d2d2]">
 										<img
 											src={p.image.url}
@@ -37,7 +52,7 @@ const ProductPage = () => {
 									<div className="info-container w-[50%] flex items-center ">
 										<div className="info-container2">
 											<div className="info-section ">
-												<h2 className="text-[3rem] font-semibold leading-tight ">
+												<h2 className="p-name text-[2.7rem] font-semibold leading-tight ">
 													{p.name}
 												</h2>
 												<h5 className="uppercase text-[#FE6263] text-[.9rem] font-medium">
@@ -55,64 +70,33 @@ const ProductPage = () => {
 												<h5 className="font-bold text-[1.2rem]">
 													Product Info
 												</h5>
-												<span className="text-[1rem]">
+												<p className="description text-[1rem]">
 													{p.description}
-												</span>
+												</p>
 											</div>
-
-											{/* quantity section */}
-
-											{/* <div className=" mt-4 mx-auto flex flex-row items-center">
-												<h5 className="font-semibold text-[1rem] mr-1">
-													Quantity:
-												</h5>
+											{isLoading ? (
 												<button
-													disabled={
-														quantity === 1
-													}
-													onClick={dec}
-													className="btn-qty">
-													-
+													disabled
+													className="addTocartBtn mt-4 mb-4 bg-black  h-[50px] cursor-pointer text-white font-medium text-[0.8rem] hover:bg-neutral-900  ">
+													<div className="px-3">
+														<div class="ld-ring ">
+															<div></div>
+															<div></div>
+															<div></div>
+															<div></div>
+														</div>
+													</div>
 												</button>
-												<input
-													type="text"
-													value={
-														p.quantity
-															? p.quantity
-															: 1
-													}
-													name="qty"
-													className="input-qty"
-												/>
+											) : (
 												<button
-													onClick={() =>
-														inc(p.id, p.quantity)
-													}
-													className="btn-qty">
-													+
-												</button>
-											</div> */}
-											{
-												// <button
-												// 	disabled
-												// 	onClick={() =>
-												// 		addToCart(
-												// 			p.id,
-												// 			p.quantity,
-												// 		)
-												// 	}
-												// 	className="addTocartBtn mt-4 bg-white  h-[50px] cursor-not-allowed text-black font-medium text-[0.8rem] border border-black ">
-												// 	Added To cart
-												// </button>
-
-												<button
-													onClick={() =>
-														addToCart(p.id)
-													}
-													className="addTocartBtn mt-4 bg-black  h-[50px] cursor-pointer text-white font-medium text-[0.8rem] hover:bg-neutral-900  ">
+													onClick={() => {
+														onLoading();
+														addToCart(p.id);
+													}}
+													className="addTocartBtn mt-4 mb-4 bg-black  h-[50px] cursor-pointer text-white font-medium text-[0.8rem] hover:bg-neutral-900  ">
 													Add To cart
 												</button>
-											}
+											)}
 										</div>
 									</div>
 								</div>
@@ -123,7 +107,6 @@ const ProductPage = () => {
 					<Loader />
 				)}
 			</div>
-			<Footer />
 		</div>
 	);
 };

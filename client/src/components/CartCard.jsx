@@ -89,10 +89,10 @@ const CartCard = ({ item }) => {
 							</button>
 						</div>
 						<IoMdTrash
-							onClick={() =>
-								deleteItemFromCart(item.id)
-							}
-							className="text-[1.6rem]  text-slate-900 cursor-pointer hover:text-[#FE6263] "
+							onClick={() => {
+								deleteItemFromCart(item.id);
+							}}
+							className="trash text-[1.6rem]  text-slate-900 cursor-pointer hover:text-[#FE6263] "
 						/>
 					</div>
 				</div>
