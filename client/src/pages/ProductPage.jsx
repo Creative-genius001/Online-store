@@ -34,7 +34,7 @@ const ProductPage = () => {
 	return (
 		<div className="">
 			<Navbar />
-			<div className="w-[95%] mx-auto mt-4">
+			<div className="head-container w-[95%] mx-auto mt-4">
 				{product.length >= 1 ? (
 					product?.map((p) => {
 						return (
@@ -62,7 +62,7 @@ const ProductPage = () => {
 													</span>
 												</h5>
 
-												<h5 className="text-black font-semibold text-[1.8rem] mt-2 ">
+												<h5 className="price text-black font-semibold text-[1.8rem] mt-2 ">
 													${p.price.raw}
 												</h5>
 											</div>
@@ -77,7 +77,7 @@ const ProductPage = () => {
 											{isLoading ? (
 												<button
 													disabled
-													className="addTocartBtn mt-4 mb-4 bg-black  h-[50px] cursor-pointer text-white font-medium text-[0.8rem] hover:bg-neutral-900  ">
+													className="addTocartBtn mt-4 mb-4 bg-black  h-[50px] text-white font-medium text-[0.8rem] ">
 													<div className="px-3">
 														<div class="ld-ring ">
 															<div></div>

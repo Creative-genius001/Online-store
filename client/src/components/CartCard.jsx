@@ -1,11 +1,6 @@
 import { useContext } from "react";
 import { IoMdTrash } from "react-icons/io";
 import { useState } from "react";
-import Loader from "./Loader";
-import {
-	AiOutlineMinus,
-	AiOutlinePlus,
-} from "react-icons/ai";
 import { CommmerceContext } from "../contextApi/commerceAPI";
 
 const CartCard = ({ item }) => {
@@ -97,7 +92,6 @@ const CartCard = ({ item }) => {
 					</div>
 				</div>
 			</div>
-			);
 		</>
 	);
 };

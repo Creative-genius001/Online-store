@@ -66,7 +66,7 @@
   margin: auto;
   width: 70%; 
   padding: 40px 50px;
-  background-color: #d3d2d249;
+  background-color: #ffffff;
   margin-top: 2rem;
   border-radius: 15px;
     /* box-shadow: 4px 1px 14px -1px rgba(0,0,0,0.08);
@@ -89,9 +89,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #D3D2D2;
+  color: black;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+}
+.btn-qty:hover{
   background-color: black;
   color: white;
-  font-weight: 500;
 }
 
 @media (max-width: 480px) {
@@ -115,6 +120,7 @@
     .subtotal{
       flex-direction: column;
       width: 100%;
+      text-align: center;
     }
     .shopping{
       width: 100%;
@@ -133,10 +139,12 @@
       font-size: .9rem;
     }
     .cart-name{
-      font-size: 1rem;
+      font-size: .9rem;
+      line-height: 17px;
     }
     .btn-qty{
-      font-size: .8rem;
+      font-size: .87rem;
+      font-weight: 400;
       width: 28px;
       height: 28px;
     }

@@ -1,8 +1,4 @@
-import {
-	createContext,
-	useContext,
-	useState,
-} from "react";
+import { createContext, useState } from "react";
 import Commerce from "@chec/commerce.js";
 
 export const CommmerceContext = createContext();

@@ -8,7 +8,6 @@ import {
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import { useState } from "react";
 import axios from "axios";
 import "../styles/cart.css";
 
@@ -28,7 +27,7 @@ const Cart = () => {
 		try {
 			await axios({
 				method: "post",
-				url: "http://localhost:5500/create-checkout-session",
+				url: "https://onlinestore-api.onrender.com/create-checkout-session",
 				data: cartList.map((list) => {
 					return list;
 				}),
