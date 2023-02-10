@@ -85,17 +85,16 @@ export function CommerceContextProvider({
 		await commerce.categories
 			.retrieve(id)
 			.then((category) => {
-				console.log(category.slug);
-				let catName = category.slug;
+				let catSlug = category.slug;
 				let catDetails = products.filter(
 					(product) => {
 						return (
 							product.categories[0].slug ==
-							catName
+							catSlug
 						);
 					},
 				);
-				console.log(catDetails);
+
 				setProducts(catDetails);
 			});
 	};
